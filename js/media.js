@@ -3,7 +3,7 @@ mute = document.getElementById("controlmute");
 recording = document.getElementById("recording");
 pause = document.getElementById("pause");
 resume = document.getElementById("resume");
-stop = document.getElementById("stop");
+Stop = document.getElementById("stop");
 audiodownload = document.getElementById("download")
 camera = document.getElementById("camera")
 
@@ -39,7 +39,7 @@ async function contmute() {
         recorders.start(1000);
         console.log('onstart')
         pause.style.display = "block";
-        stop.style.display = "block";
+        Stop.style.display = "block";
         resume.style.display = "none";
         recording.style.display = "none";
         audiodownload.style.display = "none";
@@ -48,7 +48,7 @@ async function contmute() {
         recorders.pause()
         console.log("onpause")
         pause.style.display = "none";
-        stop.style.display = "block";
+        Stop.style.display = "block";
         resume.style.display = "block";
         recording.style.display = "none";
         audiodownload.style.display = "none";
@@ -58,17 +58,17 @@ async function contmute() {
         recorders.resume();
         console.log("onresume");
         pause.style.display = "block";
-        stop.style.display = "block";
+        Stop.style.display = "block";
         resume.style.display = "none";
         recording.style.display = "none";
         audiodownload.style.display = "none";
 
     })
-    stop.addEventListener("click", () => {
+    Stop.addEventListener("click", () => {
         recorders.stop();
         console.log("all recording is done");
         pause.style.display = "none";
-        stop.style.display = "none";
+        Stop.style.display = "none";
         resume.style.display = "none";
         recording.style.display = "block";
         audiodownload.style.display = "block";
@@ -107,7 +107,9 @@ async function contmute() {
             var startcamera = await navigator.mediaDevices.getUserMedia({ video: true })
             if (startcamera.getVideoTracks().length > 0) {
                 video_track = startcamera.getVideoTracks()[0];
-                video.srcObject = video_track;
+                console.log(video_track)
+                video.srcObject = new MediaStream([video_track]);
+                console.log("titu");
                 camera.innerText = "stop camera";
             }
         }
