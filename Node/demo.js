@@ -13,7 +13,7 @@ var Demo = (function () {
 
     var _rtpSender;
 
-    var socket = io.connect('https://guptamanoahar.herokuapp.com:3000');
+    var socket = io.connect('https://test-heroku-manmohan.herokuapp.com/');
 
     async function _init() {
 
