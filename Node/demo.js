@@ -325,7 +325,7 @@ var Demo = (function () {
                 console.log(e);
             }
 
-            _audioTrack.enabled = false;
+        
 
         } catch (e) {
             console.log(e);
