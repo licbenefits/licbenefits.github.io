@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta name="viewport" content="width=device-width" />
+    <title>RTC</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="jquery-3.4.1.min.js"></script>
+    <script src="video-stream-merger.js"></script>
+    <script src="client.js"></script>
+
+    <script>
+        $(function () {
+            Demo.init();
+        });
+    </script>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                Remote
+                <video autoplay controls id="remoteVideoCtr" width="400" height="100"></video>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                Local
+                <video autoplay controls id="videoCtr" width="400" height="100"></video>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <video autoplay controls id="videoCtrRec" width="100" height="100" style="display:none"></video>
+            </div>
+
+        </div>
+        <button id="startConnection" class="btn btn-primary">Start Connection</button>
+        <button id="btnMuteUnmute" class="btn btn-primary">UnMute</button>
+        <button id="btnStartStopCam" class="btn btn-primary">Start Camera</button>
+        <button id="btnStartStopScreenshare" class="btn btn-primary">Screen Share</button>
+        <button id="btnStartReco" class="btn btn-success">Start Recording</button>
+        <button id="btnPauseReco" class="btn btn-primary" style="display:none">Pause</button>
+        <button id="btnResumeReco" class="btn btn-primary" style="display:none">Resume</button>
+        <button id="btnStopReco" class="btn btn-primary" style="display:none">Stop</button>
+        <a href="" id="downloadRecording" class="btn btn-primary" style="display:none">Download</a>
+    </div>
+</body>
+
+</html>

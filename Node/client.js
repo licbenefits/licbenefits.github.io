@@ -471,4 +471,4 @@ var Demo = (function () {
             await _init();
         }
     }
-}());
+});
