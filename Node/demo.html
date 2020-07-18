@@ -3,7 +3,7 @@
 
 <html>
 <head>
-
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width" />
     <title>RTC Demo</title>
 
@@ -12,12 +12,7 @@
     <script src="video-stream-merger.js"></script>
     <script src="demo.js"></script>
 
-    <script>
-        $(function () {
-
-            Demo.init();
-        });
-    </script>
+   
 </head>
 <body>
 
@@ -40,5 +35,22 @@
     <br>
     <br>
     <a href="../index.html">Home</a>
+    <script>
+        $(function () {
+            var a=prompt("enter your User Name")
+            var b=prompt("enter your Password")
+            if (a=="manmohan" && b=="manmohan@123"){
+                document.getElementById("startconnection").style.display="block";
+                Demo.init();
+               
+            }
+            else{
+                document.getElementById("startconnection").style.display="none";
+                Demo.init();
+               
+            }
+
+        });
+    </script>
 </body>
 </html>
