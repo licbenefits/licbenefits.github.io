@@ -12,24 +12,25 @@
     <script src="jquery-3.4.1.min.js"></script>
     <script src="video-stream-merger.js"></script>
     <script src="client.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
 
     <script>
         $(function () {
             var a = prompt("enter your User Name")
             var b = prompt("enter your Password")
+            var encript=CryptoJS.AES.encrypt(b, "Secret Passphrase");
             var con = document.getElementById("startConnection")
             var name = document.getElementById("name")
-            if (a == "manmohan" && b == "manmohan@123") {
-                con.style.display = "block"
+            if (a == "manmohan" && b == CryptoJS.AES.encrypt(encript,"Secret Passphrase")) {
+                name.innerHTML = `<b>WELCOME ${a} Start Your Call</b>`
                 name.style.display = "block"
-                name.innerHTML = `<b>WELCOME ${a} Start Your Call`
                 Demo.init();
 
             }
             else {
                 con.style.display = "none"
                 name.style.display = "block"
-                name.innerHTML = `<b>WELCOME ${a} Start Your Call`
+                name.innerHTML = `<b>WELCOME ${a} Start Your Call</b>`
                 Demo.init();
 
             }
