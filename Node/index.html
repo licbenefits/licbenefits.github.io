@@ -4,7 +4,6 @@
 
 <head>
 
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width" />
     <title>RTC</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -12,44 +11,26 @@
     <script src="jquery-3.4.1.min.js"></script>
     <script src="video-stream-merger.js"></script>
     <script src="client.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
 
     <script>
         $(function () {
-            var a = prompt("enter your User Name")
-            var b = prompt("enter your Password")
-            var encript=CryptoJS.AES.encrypt(b, "Secret Passphrase");
-            var con = document.getElementById("startConnection")
-            var name = document.getElementById("name")
-            if (a == "manmohan" && b == CryptoJS.AES.encrypt(encript,"Secret Passphrase")) {
-                name.innerHTML = `<b>WELCOME ${a} Start Your Call</b>`
-                name.style.display = "block"
-                Demo.init();
 
-            }
-            else {
-                con.style.display = "none"
-                name.style.display = "block"
-                name.innerHTML = `<b>WELCOME ${a} Start Your Call</b>`
-                Demo.init();
-
-            }
-
+            Demo.init();
         });
     </script>
 </head>
 
 <body>
-    <center><label id="name" style="display: none; border: blue solid 4px; background-color:yellowgreen"></label></center>
-    </br>
+
+
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-md-6 col-lg-6">
-                <b><u>Remote</u></b>
+                Remote
                 <video autoplay controls id="remoteVideoCtr"></video>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-6">
-                    <b><u>Local</u></b>
+                Local
                 <video autoplay controls id="videoCtr"></video>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-6">
