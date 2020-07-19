@@ -16,6 +16,20 @@ var Demo = (function () {
     var socket = io.connect('https://test-heroku-manmohan.herokuapp.com/');
 
     async function _init() {
+        var a = prompt("enter your User Name")
+        var b = prompt("enter your Password")
+        var con = document.getElementById("startConnection")
+        var name = document.getElementById("name")
+        if (a == "manmohan" && b == "manmohan@123") {
+            name.style.display = "block"
+            name.innerHTML = `<b>WELCOME ${a}</b>`
+
+        }
+        else {
+            con.style.display = "none"
+            name.style.display = "block"
+            name.innerHTML = `<b>WELCOME ${a}</b>`
+        }
 
         _localVideo = document.getElementById('videoCtr');
 
