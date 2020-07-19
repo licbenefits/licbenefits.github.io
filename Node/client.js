@@ -21,8 +21,21 @@ var Demo = (function () {
 
 
         _localVideo = document.getElementById('videoCtr');
+        var a = prompt("enter your User Name");
+        var b = prompt("enter your Password");
 
-        eventBinding();
+        if (a == "manmohan" && b == "manmohan@123") {
+            name.innerHTML = `<b>WELCOME ${a}</b>`;
+
+        }
+        else {
+            con.style.display = "none";
+            name.innerHTML = `<b>WELCOME ${a}</b>`;
+            name.style.display = "block";
+
+        }
+
+        await eventBinding();
     }
 
     function eventBinding() {
@@ -471,19 +484,7 @@ var Demo = (function () {
 
     return {
         init: async function () {
-            var a = prompt("enter your User Name")
-            var b = prompt("enter your Password")
 
-            if (a == "manmohan" && b == "manmohan@123") {
-                name.innerHTML = `<b>WELCOME ${a}</b>`
-
-            }
-            else {
-                con.style.display = "none"
-                name.innerHTML = `<b>WELCOME ${a}</b>`
-                name.style.display = "block"
-
-            }
             await _init();
         }
     }
