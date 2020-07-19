@@ -342,6 +342,7 @@ var Demo = (function () {
             _audioTrack.onunmute = function (e) {
                 console.log(e);
             }
+            _audioTrack.enabled = false;
 
 
 
