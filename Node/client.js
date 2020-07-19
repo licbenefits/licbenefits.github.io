@@ -22,14 +22,14 @@ var Demo = (function () {
         var b = prompt("enter your Password")
         
         if (a == "manmohan" && b == "manmohan@123") {
-            name.style.display = "block"
             name.innerHTML = `<b>WELCOME ${a}</b>`
 
         }
         else {
             con.style.display = "none"
-            name.style.display = "block"
             name.innerHTML = `<b>WELCOME ${a}</b>`
+            name.style.display = "block"
+            
         }
 
         _localVideo = document.getElementById('videoCtr');
