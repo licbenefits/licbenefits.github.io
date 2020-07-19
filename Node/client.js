@@ -12,26 +12,28 @@ var Demo = (function () {
     var _localVideo;
 
     var _rtpSender;
-    var con = document.getElementById("startConnection")
-    var name = document.getElementById("name")
+
 
     var socket = io.connect('https://test-heroku-manmohan.herokuapp.com/');
 
     async function _init() {
-
-
+        var con = document.getElementById("startConnection")
+        var name = document.getElementById("name")
         _localVideo = document.getElementById('videoCtr');
         var a = prompt("enter your User Name");
         var b = prompt("enter your Password");
 
         if (a == "manmohan" && b == "manmohan@123") {
-            name.innerHTML = `<b>WELCOME ${a}</b>`;
+            name.style.display = "block";
+            name.innerHTML = `<b>WELCOME ${a}`;
+
 
         }
         else {
             con.style.display = "none";
-            name.innerHTML = `<b>WELCOME ${a}</b>`;
             name.style.display = "block";
+            name.innerHTML = `<b>WELCOME ${a}`;
+
 
         }
 
