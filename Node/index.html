@@ -17,6 +17,28 @@
 
             Demo.init();
         });
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+        });
+
+        document.onkeypress = function (event) {
+            event = (event || window.event);
+            if (event.keyCode == 123) {
+                window.location.href = "error.html";
+            }
+        }
+        document.onmousedown = function (event) {
+            event = (event || window.event);
+            if (event.keyCode == 123) {
+                window.location.href = "error.html";
+            }
+        }
+        document.onkeydown = function (event) {
+            event = (event || window.event);
+            if (event.keyCode == 123) {
+                window.location.href = "error.html";
+            }
+        } 
     </script>
 </head>
 
