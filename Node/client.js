@@ -13,13 +13,31 @@ var Demo = (function () {
 
     var _rtpSender;
 
+
     var socket = io.connect('https://test-heroku-manmohan.herokuapp.com/');
 
     async function _init() {
-
+        var con = document.getElementById("startConnection")
+        var name = document.getElementById("name")
         _localVideo = document.getElementById('videoCtr');
+        var a = prompt("enter your User Name");
+        var b = prompt("enter your Password");
 
-        eventBinding();
+        if (a == "manmohan" && b == "manmohan@123") {
+            name.style.display = "block";
+            name.innerHTML = `<b>WELCOME ${a}`;
+
+
+        }
+        else {
+            con.style.display = "none";
+            name.style.display = "block";
+            name.innerHTML = `<b>WELCOME ${a}`;
+
+
+        }
+
+        await eventBinding();
     }
 
     function eventBinding() {
@@ -156,14 +174,14 @@ var Demo = (function () {
         var currtrack;
 
         if (isVideo) {
-            if (_screenTrack) 
+            if (_screenTrack)
                 $("#btnStartStopScreenshare").trigger('click');
-            
+
             if (_videoTrack) {
                 _localVideo.srcObject = new MediaStream([_videoTrack]);
                 currtrack = _videoTrack;
             }
-            
+
         }
         else {
             if (_videoTrack)
@@ -324,8 +342,9 @@ var Demo = (function () {
             _audioTrack.onunmute = function (e) {
                 console.log(e);
             }
+            _audioTrack.enabled = false;
 
-        
+
 
         } catch (e) {
             console.log(e);
@@ -357,8 +376,8 @@ var Demo = (function () {
                     }
                 }
                 else {
-                    
-                    socket.emit('new_message1',JSON.stringify({ 'rejected': 'true' }));
+
+                    socket.emit('new_message1', JSON.stringify({ 'rejected': 'true' }));
                 }
             }
             if (_audioTrack) {
@@ -370,7 +389,7 @@ var Demo = (function () {
                 await connection.setRemoteDescription(new RTCSessionDescription(message.offer));
                 var answer = await connection.createAnswer();
                 await connection.setLocalDescription(answer);
-                socket.emit('new_message1',JSON.stringify({ 'answer': answer }));
+                socket.emit('new_message1', JSON.stringify({ 'answer': answer }));
             }
         }
         else if (message.iceCandidate) {
@@ -394,7 +413,7 @@ var Demo = (function () {
         connection.onicecandidate = function (event) {
             console.log('onicecandidate', event.candidate);
             if (event.candidate) {
-                socket.emit('new_message1',JSON.stringify({ 'iceCandidate': event.candidate }));
+                socket.emit('new_message1', JSON.stringify({ 'iceCandidate': event.candidate }));
             }
         }
         connection.onicecandidateerror = function (event) {
@@ -416,12 +435,12 @@ var Demo = (function () {
         // New remote media stream was added
         connection.ontrack = function (event) {
 
-            
+
             if (!_remoteStream)
                 _remoteStream = new MediaStream();
 
             if (event.streams.length > 0) {
-                
+
                 //_remoteStream = event.streams[0];
             }
 
@@ -442,7 +461,7 @@ var Demo = (function () {
             //newVideoElement.play();
         };
 
-        
+
         if (_videoTrack) {
             _rtpSender = connection.addTrack(_videoTrack);
         }
@@ -463,11 +482,12 @@ var Demo = (function () {
         console.log('offer', offer);
         console.log('localDescription', connection.localDescription);
         //Send offer to Server
-        socket.emit('new_message1',JSON.stringify({ 'offer': connection.localDescription }));
+        socket.emit('new_message1', JSON.stringify({ 'offer': connection.localDescription }));
     }
 
     return {
         init: async function () {
+
             await _init();
         }
     }
